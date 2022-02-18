@@ -1,0 +1,9 @@
+i {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  font-size: 2rem;
+  padding: 0.5rem;
+  background-color: lightgray;
+}

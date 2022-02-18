@@ -3,6 +3,7 @@ import {
   GoogleMap,
   useLoadScript
 } from '@react-google-maps/api';
+import mapStyle from '../lib/mapStyle';
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -12,6 +13,11 @@ const mapContainerStyle = {
 const center = {
   lat: 33.684566,
   lng: -117.826508
+};
+const options = {
+  styles: mapStyle,
+  disableDefaultUI: true,
+  zoomControl: true
 };
 
 export default function Map() {
@@ -28,6 +34,7 @@ export default function Map() {
     mapContainerStyle={mapContainerStyle}
     zoom={12}
     center={center}
+    options={options}
     ></GoogleMap>
   </div>;
 }
