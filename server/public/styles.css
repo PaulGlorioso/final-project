@@ -1,3 +1,7 @@
+body {
+  font-family: Amiko, sans-serif;
+}
+
 i {
   position: absolute;
   top: 1rem;
@@ -6,4 +10,26 @@ i {
   font-size: 2rem;
   padding: 0.5rem;
   background-color: lightgray;
+}
+
+.offcanvas-header {
+  background-color: tan;
+}
+
+.offcanvas-body {
+  background-color: tan;
+}
+
+.offcanvas-footer {
+  padding: 1rem;
+  background-color: tan;
+}
+
+.nav-links > a {
+  color: black;
+  text-decoration: none;
+}
+
+a > h2 {
+  margin-bottom: 2rem;
 }
