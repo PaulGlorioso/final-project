@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   GoogleMap,
-  useLoadScript
+  useLoadScript,
+  Marker
 } from '@react-google-maps/api';
 import mapStyle from '../lib/mapStyle';
 
@@ -26,6 +27,8 @@ export default function Map() {
     libraries
   });
 
+  const [markers, setMarkers] = React.useState([]);
+
   if (loadError) return 'Error loading map';
   if (!isLoaded) return 'Loading Maps';
 
@@ -35,6 +38,19 @@ export default function Map() {
     zoom={12}
     center={center}
     options={options}
-    ></GoogleMap>
+    onClick={event => {
+      setMarkers(current => [...current,
+        {
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+          locationId: 0
+        }
+      ]);
+    }}
+    >
+      {markers.map(marker => (
+      <Marker key={marker.locationId} position={{ lat: marker.lat, lng: marker.lng }}/>
+      ))}
+    </GoogleMap>
   </div>;
 }
