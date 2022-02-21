@@ -21,6 +21,8 @@ const options = {
   zoomControl: true
 };
 
+let counter = 1;
+
 export default function Map() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -28,6 +30,15 @@ export default function Map() {
   });
 
   const [markers, setMarkers] = React.useState([]);
+  const onMapClick = React.useCallback(event => {
+    setMarkers(current => [...current,
+      {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+        locationId: counter++
+      }
+    ]);
+  }, []);
 
   if (loadError) return 'Error loading map';
   if (!isLoaded) return 'Loading Maps';
@@ -38,19 +49,11 @@ export default function Map() {
     zoom={12}
     center={center}
     options={options}
-    onClick={event => {
-      setMarkers(current => [...current,
-        {
-          lat: event.latLng.lat(),
-          lng: event.latLng.lng(),
-          locationId: 0
-        }
-      ]);
-    }}
+    onClick={onMapClick}
     >
-      {markers.map(marker => (
+      {markers.map(marker =>
       <Marker key={marker.locationId} position={{ lat: marker.lat, lng: marker.lng }}/>
-      ))}
+      )}
     </GoogleMap>
   </div>;
 }
