@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from '../components/map';
+import Navbar from '../components/navbar';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class Home extends React.Component {
   render() {
     return (
     <>
+    <Navbar />
     <Map />
     </>
     );
