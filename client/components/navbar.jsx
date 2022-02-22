@@ -3,7 +3,7 @@ import React from 'react';
 export default function Navbar() {
   return (
     <div>
-      <i className="fas fa-bars" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
+      <i className="fas fa-bars bars" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
       <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header">
           <h1 className="offcanvas-title" id="offcanvasExampleLabel">TRAILBLAZE</h1>
