@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './pages/home';
 import NotFound from './pages/not-found';
 import { parseRoute } from './lib';
+import MapPage from './pages/map';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,6 +26,9 @@ export default class App extends React.Component {
 
     if (route.path === '') {
       return <Home />;
+    }
+    if (route.path === 'map') {
+      return <MapPage />;
     }
 
     return <NotFound />;
