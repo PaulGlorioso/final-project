@@ -6,7 +6,7 @@ export default function Navbar() {
       <i className="fas fa-bars bars" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></i>
       <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div className="offcanvas-header">
-          <h1 className="offcanvas-title" id="offcanvasExampleLabel">TRAILBLAZE</h1>
+          <h1 className="offcanvas-title fw-bold" id="offcanvasExampleLabel">TRAILBLAZE</h1>
           <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
