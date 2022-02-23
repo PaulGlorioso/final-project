@@ -17,7 +17,7 @@ export default class Home extends React.Component {
           <div className='d-flex flex-column text-center title' style={{ height: '90vh' }}>
             <h2>Where ya wanna go?</h2>
             <div>
-              <a href='#map' className='btn serbtn'>Search Here</a>
+              <a href='#map' className='btn serbtn'>Search Here <i className="fas fa-map-marker-alt"></i></a>
             </div>
             <div>
               <a href='#login' className=' btn logbtn'>Log-In/Sign-Up</a>
