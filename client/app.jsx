@@ -3,6 +3,7 @@ import Home from './pages/home';
 import NotFound from './pages/not-found';
 import { parseRoute } from './lib';
 import MapPage from './pages/map';
+import AddPage from './pages/addPage';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,6 +30,11 @@ export default class App extends React.Component {
     }
     if (route.path === 'map') {
       return <MapPage />;
+    }
+    if (route.path === 'form') {
+      const lat = route.params.get('lat');
+      const lng = route.params.get('lng');
+      return <AddPage lat={lat} lng={lng}/>;
     }
 
     return <NotFound />;

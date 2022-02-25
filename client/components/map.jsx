@@ -2,7 +2,8 @@ import React from 'react';
 import {
   GoogleMap,
   useLoadScript,
-  Marker
+  Marker,
+  InfoWindow
 } from '@react-google-maps/api';
 import mapStyle from '../lib/mapStyle';
 
@@ -23,13 +24,15 @@ const options = {
 
 let counter = 1;
 
-export default function Map() {
+export default function Map(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   });
 
-  const [markers, setMarkers] = React.useState([]);
+  const [markers, setMarkers] = React.useState(props.markers);
+  const [selected, setSelected] = React.useState(null);
+
   const onMapClick = React.useCallback(event => {
     setMarkers(current => [...current,
       {
@@ -52,8 +55,27 @@ export default function Map() {
     onClick={onMapClick}
     >
       {markers.map(marker =>
-      <Marker key={marker.locationId} position={{ lat: marker.lat, lng: marker.lng }}/>
+      <Marker
+      key={marker.locationId}
+      position={{ lat: marker.lat, lng: marker.lng }}
+      onClick={ () => {
+        setSelected(marker);
+      }}
+      />
       )}
+
+      {selected
+        ? (<InfoWindow
+          position={{ lat: (selected.lat + 0.01), lng: selected.lng }}
+          onCloseClick={() => {
+            setSelected(null);
+          }}
+          >
+        <div>
+          <a href={`#form?lat=${selected.lat}&lng=${selected.lng}`}>Add Marker</a>
+        </div>
+      </InfoWindow>)
+        : null}
     </GoogleMap>
   </div>;
 }

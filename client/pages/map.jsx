@@ -7,7 +7,7 @@ export default class MapPage extends React.Component {
     super(props);
 
     this.state = {
-
+      markers: []
     };
   }
 
@@ -15,7 +15,7 @@ export default class MapPage extends React.Component {
     return (
       <>
         <Navbar />
-        <Map />
+        <Map markers={this.state.markers}/>
       </>
     );
   }
